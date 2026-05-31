@@ -5,21 +5,29 @@
 set -euo pipefail
 mkdir -p public/assets
 
-# Example placeholders - replace these with real direct-download URLs
-# PUSHUP_URL="https://www.pexels.com/path/to/pushup.webm"
-# SQUAT_URL="https://www.pexels.com/path/to/squat.webm"
-# PLANK_URL="https://www.pexels.com/path/to/plank.webm"
+# Curated Pexels download endpoints for sample exercise clips.
+# These endpoints (pexels.com/download/video/<id>/) redirect to the actual video file.
+# Pexels videos are free to use under the Pexels license — review https://www.pexels.com/license/.
 
-if [ -z "${PUSHUP_URL:-}" ]; then
-  echo "Please edit this script and set PUSHUP_URL, SQUAT_URL, PLANK_URL to real file URLs."
-  exit 1
-fi
+# You can override any URL by exporting the variable before running the script.
+# Example: PUSHUP_URL="https://..." bash scripts/download-sample-media.sh
 
-curl -L "$PUSHUP_URL" -o public/assets/pushup.webm
-curl -L "$SQUAT_URL" -o public/assets/squat.webm
-curl -L "$PLANK_URL" -o public/assets/plank.webm
+# Default curated clips (short, free Pexels videos). If you prefer different clips,
+# open https://www.pexels.com/search/videos/<term>/ and copy the "Download" link for a clip.
+PUSHUP_URL="${PUSHUP_URL:-https://www.pexels.com/download/video/4804787/}"
+SQUAT_URL="${SQUAT_URL:-https://www.pexels.com/download/video/4838220/}"
+PLANK_URL="${PLANK_URL:-https://www.pexels.com/download/video/6023273/}"
+BURPEE_URL="${BURPEE_URL:-https://www.pexels.com/download/video/4671964/}"
+JUMPING_JACK_URL="${JUMPING_JACK_URL:-https://www.pexels.com/download/video/4764220/}"
+MOUNTAIN_CLIMBER_URL="${MOUNTAIN_CLIMBER_URL:-https://www.pexels.com/download/video/6525467/}"
 
-# Optionally add poster images
-# curl -L "$PUSHUP_POSTER_URL" -o public/assets/pushup-poster.jpg
+echo "Downloading sample exercise clips to public/assets/ (Pexels license applies)..."
+
+curl -L "$PUSHUP_URL" -o public/assets/pushup.mp4
+curl -L "$SQUAT_URL" -o public/assets/squat.mp4
+curl -L "$PLANK_URL" -o public/assets/plank.mp4
+curl -L "$BURPEE_URL" -o public/assets/burpee.mp4
+curl -L "$JUMPING_JACK_URL" -o public/assets/jumping-jack.mp4
+curl -L "$MOUNTAIN_CLIMBER_URL" -o public/assets/mountain-climber.mp4
 
 echo "Downloaded sample media to public/assets/"
