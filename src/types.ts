@@ -10,6 +10,13 @@ export interface NotesEntry {
   text: string;
 }
 
+export interface SessionEntry {
+  id: string;
+  date: string; // ISO date
+  exercise: string;
+  durationSeconds: number;
+}
+
 export interface HistoryEntry {
   date: string;
   value: number;
@@ -22,6 +29,7 @@ export interface ProgressState {
   longestStreak: number;
   completed: Record<WorkoutDayKey, boolean>;
   notes: NotesEntry[];
+  sessions?: SessionEntry[];
   weightHistory: HistoryEntry[];
   maxPushupHistory: HistoryEntry[];
   lastSynced: string | null;
@@ -33,6 +41,12 @@ export interface Exercise {
   easierVariation: string;
   commonMistakes: string;
   safetyTips: string;
+  media?: {
+    type: 'image' | 'gif' | 'video';
+    src: string;
+    poster?: string;
+    alt?: string;
+  }[];
 }
 
 export interface WorkoutDay {
@@ -46,6 +60,7 @@ export interface ProgressUpdate {
   profile?: Partial<ProfileState>;
   completed?: Partial<Record<WorkoutDayKey, boolean>>;
   notes?: NotesEntry[];
+  sessions?: SessionEntry[];
   weightHistory?: HistoryEntry[];
   maxPushupHistory?: HistoryEntry[];
 }

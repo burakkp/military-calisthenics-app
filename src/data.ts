@@ -30,6 +30,16 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Knee push-up or incline push-up on a bench.',
     commonMistakes: 'Letting hips sag, flaring elbows, or not lowering far enough.',
     safetyTips: 'Keep a straight spine and breathe steadily through each repetition.'
+    ,
+    media: [
+      {
+        type: 'video',
+        // local asset (place optimized clip at public/assets/pushup.webm)
+        src: '/assets/pushup.webm',
+        poster: '/assets/pushup-poster.jpg',
+        alt: 'Push-up demo'
+      }
+    ]
   },
   Squat: {
     name: 'Squat',
@@ -37,6 +47,16 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Sit-to-stand or half squat to reduce intensity.',
     commonMistakes: 'Rounding the back, knees caving in, or heels lifting.',
     safetyTips: 'Maintain an upright chest and push through the heels.'
+    ,
+    media: [
+      {
+        type: 'video',
+        // local asset
+        src: '/assets/squat.webm',
+        poster: '/assets/squat-poster.jpg',
+        alt: 'Squat demo'
+      }
+    ]
   },
   Plank: {
     name: 'Plank',
@@ -44,6 +64,15 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Knee plank with the hips supported on the floor.',
     commonMistakes: 'Raising hips too high or letting the lower back sag.',
     safetyTips: 'Keep a neutral spine and engage the abs for the full hold.'
+    ,
+    media: [
+      {
+        type: 'video',
+        src: '/assets/plank.webm',
+        poster: '/assets/plank-poster.jpg',
+        alt: 'Plank demo'
+      }
+    ]
   },
   'Side Plank': {
     name: 'Side Plank',

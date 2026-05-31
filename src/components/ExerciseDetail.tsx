@@ -14,6 +14,32 @@ export default function ExerciseDetail({ exercise }: ExerciseDetailProps) {
         </div>
       </div>
       <div className="space-y-4 text-slate-200">
+            {exercise.media && exercise.media.length > 0 && (
+              <div className="mb-4">
+                {exercise.media.map((m, idx) => (
+                  <div key={idx} className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+                    {m.type === 'video' ? (
+                      <video
+                        playsInline
+                        controls
+                        muted
+                        loop
+                        poster={m.poster}
+                        className="w-full h-auto bg-black"
+                        preload="none"
+                      >
+                        <source src={m.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : m.type === 'gif' || m.type === 'image' ? (
+                      // images and gifs
+                      // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                      <img loading="lazy" src={m.src} alt={m.alt ?? exercise.name} className="w-full h-auto" />
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            )}
         <div>
           <h3 className="text-sm font-semibold uppercase text-slate-400">Description</h3>
           <p className="mt-2 text-sm leading-6">{exercise.description}</p>

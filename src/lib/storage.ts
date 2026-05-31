@@ -1,4 +1,4 @@
-import type { NotesEntry, ProgressState, ProgressUpdate } from '../types';
+import type { NotesEntry, ProgressState, ProgressUpdate, SessionEntry } from '../types';
 
 const STORAGE_KEY = 'military-calisthenics-state';
 const QUEUE_KEY = 'military-calisthenics-queue';
@@ -20,6 +20,7 @@ const defaultState: ProgressState = {
     sunday: false
   },
   notes: [],
+  sessions: [],
   weightHistory: [{ date: today, value: 90 }],
   maxPushupHistory: [{ date: today, value: 10 }],
   lastSynced: null
@@ -63,5 +64,14 @@ export function createNoteEntry(text: string): NotesEntry {
   return {
     date: new Date().toISOString().split('T')[0],
     text: text.trim()
+  };
+}
+
+export function createSessionEntry(exercise: string, durationSeconds: number): SessionEntry {
+  return {
+    id: `${Date.now()}-${Math.floor(Math.random() * 10000)}`,
+    date: new Date().toISOString(),
+    exercise,
+    durationSeconds
   };
 }

@@ -2,8 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Exercise, HistoryEntry, ProgressState, ProgressUpdate, WorkoutDayKey } from './types';
 import ExerciseDetail from './components/ExerciseDetail';
 import ProgressChart from './components/ProgressChart';
+import ExerciseTimer from './components/ExerciseTimer';
 import { workoutPlan, exerciseLibrary } from './data';
-import { loadState, saveState, addQueueItem, drainQueue, getQueueSize, createNoteEntry } from './lib/storage';
+import { loadState, saveState, addQueueItem, drainQueue, getQueueSize, createNoteEntry, createSessionEntry } from './lib/storage';
 import { fetchProgress, submitProgress } from './lib/api';
 
 const defaultState: ProgressState = loadState();
@@ -184,6 +185,15 @@ function App() {
     setNotesText('');
   }
 
+  function handleExerciseStop(durationSeconds: number) {
+    const session = createSessionEntry(selectedExercise, durationSeconds);
+    const minutes = Math.floor(durationSeconds / 60);
+    const seconds = durationSeconds % 60;
+    const durationLabel = `${minutes}m ${seconds}s`;
+    updateState({ sessions: [session, ...(state.sessions ?? [])], notes: [createNoteEntry(`${selectedExercise} session — ${durationLabel}`), ...state.notes] });
+    setStatusMessage(`Saved session: ${durationLabel}`);
+  }
+
   if (loading) {
     return (
       <main className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100">
@@ -263,6 +273,27 @@ function App() {
               <div className="grid gap-4 md:grid-cols-2">
                 <ProgressChart data={historySeries.weightSeries} label="Weight" color="#10b981" unit="kg" />
                 <ProgressChart data={historySeries.pushupSeries} label="Push-up Max" color="#0ea5e9" unit="reps" />
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-card">
+              <h2 className="text-xl font-semibold">Sessions</h2>
+              <div className="mt-4 space-y-3">
+                {(!state.sessions || state.sessions.length === 0) ? (
+                  <p className="text-slate-400 text-sm">No recorded sessions yet. Start a timer to log sessions.</p>
+                ) : (
+                  state.sessions.slice(0, 8).map((s) => (
+                    <div key={s.id} className="rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <div className="font-semibold text-slate-100">{s.exercise}</div>
+                          <div className="text-slate-400 text-xs">{new Date(s.date).toLocaleString()}</div>
+                        </div>
+                        <div className="font-mono text-sky-300">{Math.floor(s.durationSeconds/60)}m {s.durationSeconds%60}s</div>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
 
@@ -447,6 +478,20 @@ function App() {
                       );
                     })}
                   </div>
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Recent sessions</p>
+                    <ul className="mt-3 space-y-3 text-slate-100">
+                      {(state.sessions ?? []).slice(0,6).map((s) => (
+                        <li key={s.id} className="rounded-2xl border border-slate-800 bg-slate-950 px-4 py-3">
+                          <div className="flex items-center justify-between text-sm">
+                            <span>{s.exercise}</span>
+                            <span className="font-mono text-sky-300">{Math.floor(s.durationSeconds/60)}m {s.durationSeconds%60}s</span>
+                          </div>
+                          <div className="mt-1 text-xs text-slate-400">{new Date(s.date).toLocaleString()}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 {selectedExerciseDetails ? <ExerciseDetail exercise={selectedExerciseDetails} /> : null}
               </>
@@ -523,6 +568,9 @@ function App() {
                     className="rounded-3xl border border-slate-800 bg-slate-950 px-4 py-3 text-slate-100 outline-none"
                   />
                 </label>
+                <div>
+                  <ExerciseTimer exerciseName={selectedExercise} onStop={handleExerciseStop} />
+                </div>
               </div>
             </div>
 
