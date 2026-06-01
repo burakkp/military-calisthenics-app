@@ -7,3 +7,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 coverage/
+public/assets/*.mp4
+public/assets/*.webm

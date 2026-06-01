@@ -41,12 +41,10 @@ export interface Exercise {
   easierVariation: string;
   commonMistakes: string;
   safetyTips: string;
-  media?: {
-    type: 'image' | 'gif' | 'video';
-    src: string;
-    poster?: string;
-    alt?: string;
-  }[];
+  media?: (
+    | { type: 'youtube'; videoId: string; title?: string }
+    | { type: 'image' | 'gif' | 'video'; src: string; poster?: string; alt?: string }
+  )[];
 }
 
 export interface WorkoutDay {

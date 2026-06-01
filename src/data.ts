@@ -30,13 +30,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Knee push-up or incline push-up on a bench.',
     commonMistakes: 'Letting hips sag, flaring elbows, or not lowering far enough.',
     safetyTips: 'Keep a straight spine and breathe steadily through each repetition.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/pushup.mp4',
-        alt: 'Push-up demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'vt-IbHbN7S8', title: 'How to Do a Push-Up Correctly' }]
   },
   Squat: {
     name: 'Squat',
@@ -44,13 +38,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Sit-to-stand or half squat to reduce intensity.',
     commonMistakes: 'Rounding the back, knees caving in, or heels lifting.',
     safetyTips: 'Maintain an upright chest and push through the heels.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/squat.mp4',
-        alt: 'Squat demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'nEQQle9-0NA', title: 'How to Squat Properly' }]
   },
   Plank: {
     name: 'Plank',
@@ -58,13 +46,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Knee plank with the hips supported on the floor.',
     commonMistakes: 'Raising hips too high or letting the lower back sag.',
     safetyTips: 'Keep a neutral spine and engage the abs for the full hold.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/plank.mp4',
-        alt: 'Plank demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'mwlp75MS6Rg', title: 'How to do a Plank | NASM' }]
   },
   'Side Plank': {
     name: 'Side Plank',
@@ -93,13 +75,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Step out one foot at a time instead of jumping.',
     commonMistakes: 'Landing hard on the knees or rounding the back.',
     safetyTips: 'Land softly and keep shoulders relaxed.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/jumping-jack.mp4',
-        alt: 'Jumping Jack demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'uLVt6u15L98', title: 'How to do a Jumping Jack | NASM' }]
   },
   Burpee: {
     name: 'Burpee',
@@ -107,13 +83,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Step back into plank instead of jumping back.',
     commonMistakes: 'Rushing the movement or losing spine alignment.',
     safetyTips: 'Move with control and breathe through each phase.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/burpee.mp4',
-        alt: 'Burpee demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'wGvBfVeCNko', title: 'Burpees for Beginners' }]
   },
   'Mountain Climber': {
     name: 'Mountain Climber',
@@ -121,13 +91,7 @@ export const exerciseLibrary: Record<string, Exercise> = {
     easierVariation: 'Slow the pace and bring knees forward one at a time.',
     commonMistakes: 'Hips bouncing or shoulders collapsing.',
     safetyTips: 'Keep the body stable and maintain a solid plank position.',
-    media: [
-      {
-        type: 'video',
-        src: '/assets/mountain-climber.mp4',
-        alt: 'Mountain Climber demo'
-      }
-    ]
+    media: [{ type: 'youtube', videoId: 'gW-q50V6Z_0', title: 'Mountain Climbers: How To' }]
   },
   Walking: {
     name: 'Walking',

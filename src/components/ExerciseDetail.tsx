@@ -18,7 +18,18 @@ export default function ExerciseDetail({ exercise }: ExerciseDetailProps) {
               <div className="mb-4">
                 {exercise.media.map((m, idx) => (
                   <div key={idx} className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
-                    {m.type === 'video' ? (
+                    {m.type === 'youtube' ? (
+                      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                        <iframe
+                          className="absolute inset-0 w-full h-full"
+                          src={`https://www.youtube-nocookie.com/embed/${m.videoId}?rel=0&modestbranding=1`}
+                          title={m.title ?? exercise.name}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : m.type === 'video' ? (
                       <video
                         playsInline
                         controls
@@ -31,11 +42,9 @@ export default function ExerciseDetail({ exercise }: ExerciseDetailProps) {
                         <source src={m.src} type={m.src.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
                         Your browser does not support the video tag.
                       </video>
-                    ) : m.type === 'gif' || m.type === 'image' ? (
-                      // images and gifs
-                      // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                    ) : (
                       <img loading="lazy" src={m.src} alt={m.alt ?? exercise.name} className="w-full h-auto" />
-                    ) : null}
+                    )}
                   </div>
                 ))}
               </div>
