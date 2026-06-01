@@ -29,14 +29,11 @@ export const exerciseLibrary: Record<string, Exercise> = {
     description: 'A bodyweight upper-body exercise that strengthens chest, shoulders, and triceps.',
     easierVariation: 'Knee push-up or incline push-up on a bench.',
     commonMistakes: 'Letting hips sag, flaring elbows, or not lowering far enough.',
-    safetyTips: 'Keep a straight spine and breathe steadily through each repetition.'
-    ,
+    safetyTips: 'Keep a straight spine and breathe steadily through each repetition.',
     media: [
       {
         type: 'video',
-        // local asset (place optimized clip at public/assets/pushup.webm)
-        src: '/assets/pushup.webm',
-        poster: '/assets/pushup-poster.jpg',
+        src: '/assets/pushup.mp4',
         alt: 'Push-up demo'
       }
     ]
@@ -46,14 +43,11 @@ export const exerciseLibrary: Record<string, Exercise> = {
     description: 'A lower-body movement focused on quads, glutes, and hamstrings.',
     easierVariation: 'Sit-to-stand or half squat to reduce intensity.',
     commonMistakes: 'Rounding the back, knees caving in, or heels lifting.',
-    safetyTips: 'Maintain an upright chest and push through the heels.'
-    ,
+    safetyTips: 'Maintain an upright chest and push through the heels.',
     media: [
       {
         type: 'video',
-        // local asset
-        src: '/assets/squat.webm',
-        poster: '/assets/squat-poster.jpg',
+        src: '/assets/squat.mp4',
         alt: 'Squat demo'
       }
     ]
@@ -63,13 +57,11 @@ export const exerciseLibrary: Record<string, Exercise> = {
     description: 'A core stability hold that strengthens the midsection.',
     easierVariation: 'Knee plank with the hips supported on the floor.',
     commonMistakes: 'Raising hips too high or letting the lower back sag.',
-    safetyTips: 'Keep a neutral spine and engage the abs for the full hold.'
-    ,
+    safetyTips: 'Keep a neutral spine and engage the abs for the full hold.',
     media: [
       {
         type: 'video',
-        src: '/assets/plank.webm',
-        poster: '/assets/plank-poster.jpg',
+        src: '/assets/plank.mp4',
         alt: 'Plank demo'
       }
     ]
@@ -100,21 +92,49 @@ export const exerciseLibrary: Record<string, Exercise> = {
     description: 'A cardio move that raises heart rate and improves coordination.',
     easierVariation: 'Step out one foot at a time instead of jumping.',
     commonMistakes: 'Landing hard on the knees or rounding the back.',
-    safetyTips: 'Land softly and keep shoulders relaxed.'
+    safetyTips: 'Land softly and keep shoulders relaxed.',
+    media: [
+      {
+        type: 'video',
+        src: '/assets/jumping-jack.mp4',
+        alt: 'Jumping Jack demo'
+      }
+    ]
   },
   Burpee: {
     name: 'Burpee',
     description: 'A full-body conditioning exercise combining a squat, plank, and jump.',
     easierVariation: 'Step back into plank instead of jumping back.',
     commonMistakes: 'Rushing the movement or losing spine alignment.',
-    safetyTips: 'Move with control and breathe through each phase.'
+    safetyTips: 'Move with control and breathe through each phase.',
+    media: [
+      {
+        type: 'video',
+        src: '/assets/burpee.mp4',
+        alt: 'Burpee demo'
+      }
+    ]
   },
   'Mountain Climber': {
     name: 'Mountain Climber',
     description: 'A dynamic core and cardio exercise performed from a plank.',
     easierVariation: 'Slow the pace and bring knees forward one at a time.',
     commonMistakes: 'Hips bouncing or shoulders collapsing.',
-    safetyTips: 'Keep the body stable and maintain a solid plank position.'
+    safetyTips: 'Keep the body stable and maintain a solid plank position.',
+    media: [
+      {
+        type: 'video',
+        src: '/assets/mountain-climber.mp4',
+        alt: 'Mountain Climber demo'
+      }
+    ]
+  },
+  Walking: {
+    name: 'Walking',
+    description: 'A steady-paced walk to build aerobic base and aid active recovery.',
+    easierVariation: 'Shorter walks at a slower comfortable pace.',
+    commonMistakes: 'Slouching the shoulders or looking down at the ground.',
+    safetyTips: 'Keep the chest tall, engage the core, and maintain a natural arm swing.'
   },
   'Brisk Walk': {
     name: 'Brisk Walk',

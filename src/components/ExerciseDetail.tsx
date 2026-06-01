@@ -28,7 +28,7 @@ export default function ExerciseDetail({ exercise }: ExerciseDetailProps) {
                         className="w-full h-auto bg-black"
                         preload="none"
                       >
-                        <source src={m.src} type="video/mp4" />
+                        <source src={m.src} type={m.src.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
                         Your browser does not support the video tag.
                       </video>
                     ) : m.type === 'gif' || m.type === 'image' ? (
